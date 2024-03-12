@@ -1,0 +1,43 @@
+/*
+        Pretendemos que nuestro server coga datos de otras apis y la sirvamos a nuestro navegador a nuestros clientes
+
+
+*/
+
+
+1º-->   Necesitamos realizar unas instalaciones:
+        npm install cors                        //Estrategia/politica de acceso al servidor
+                                                //Por ejemplo dejar acceso al servidor solamente a través de una web predeterminada
+                                                //O dejar acceder a todo
+                                                //la cors policy son las normas a aplicarse
+
+        cors tiene tambien sus tipos:
+
+
+        npm install @types/cors --save-dev              //son los tipos de cors
+        npm install axios                               //es la forma de solicitar /recibir datos
+        npm install dotenv                              //es para centralizar variables en el entorno servidor
+                                                        //el puerto que usara el servidor, otras variables se crea un archivo con esas variables globales con extensión env
+
+2º-->   Después creamos el archivo '.env'
+        ponemos PORT=3000
+        Cuando por código solicitamos el valor de PORT acudira a este archivo
+
+3º-->   Crearemos una carpeta llamada interfaces que contendrá nuestros tipos
+
+        En este ejeplo accederemos a la api de chucknorris
+        1.creamos un arcrivo chuck.interface.ts
+        2.vamos a la api-->https://api.chucknorris.io/
+        3.Copiamos el ejemplo de response
+        4.vamos al vscoe , menu view, command pallete y le damos a Paste JSOn, y escribimos Ichuck
+
+        se generará la interface de la api de chuck
+
+4º-->   Establecemos una ruta y nuestro server se conectará a la api y mostrara esos datos
+        1.      creamos una carpeta llamada controllers
+                Los controles es quien va a controlar las peticiones que se realizar y las gestiona
+        2.      creamos un fichero llamado chuckController.ts
+                Pegamos el contenido con las funciones que reciben y dan datos
+5º-->   último paso-->copiar index.ts
+
+
