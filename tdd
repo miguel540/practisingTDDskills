@@ -1,0 +1,16 @@
+Vamos a utilizar vitest
+1º->    ejecutar --->   npm install -D vitest
+2º->                     npm install standard -D --> reglas de buenas practicas
+
+3º->    Añadimos al package.json
+        {
+         "scripts": {
+            "test": "vitest",
+            "coverage": "vitest run --coverage"
+        },
+        "eslintConfig": {
+             "extends":"./node_modules/standard/eslintrc.json"
+            }
+        }
+4º->    Creamos una carpeta llamada test
+5º->    Creamos un test , un archivo con extension .test.ts
