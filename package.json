@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_OPTIONS=--enable-source-maps&& start /b tsc -w & nodemon dist/index.js",
-    "lint": "eslint . --ext .ts"
-  },
+    "lint": "eslint . --ext .ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+     },
   "keywords": [],
   "author": "",
   "license": "ISC",
