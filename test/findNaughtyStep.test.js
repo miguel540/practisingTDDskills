@@ -21,6 +21,13 @@
 import { test, expect } from 'vitest';
 import {findNaughtyStep} from 'findNaughtyStep';
 
-test('la función retorna []', () => {
-        expect(findNaughtyStep()).toBe(['']);
+test('la función lanza una excepción si no se le pasan como parámetros dos strings', () => {
+    expect(():void=>findNaughtyStep('abcd',NaN)).toThrow(
+        'Function must take two parameters with type "string"');
 });
+
+test('la función retorna []', () => {
+        expect(findNaughtyStep('abcd','abcde')).toEqual(['']);
+});
+
+
