@@ -11,8 +11,8 @@ const validateParametrs= (palabra1:string,palabra2:string)=>{
     { throw new Error('The length of both parameters must be the same.');}
 };
 
-export const isAanagram = (palabra1:string,palabra2:string):boolean => {
-    validateParametrs(palabra1,palabra2);
+    export const isAanagram = (palabra1:string,palabra2:string):boolean => {
+        validateParametrs(palabra1,palabra2);
 
     // for (const letra of palabra1)
     // {
