@@ -43,13 +43,11 @@ test('La funcion cuando encuentra un "(" , invierte'+
     ' el contenido de lo que encuentre hasta que se tope con un ")" ',()=>{;
     let text = '(otsE)';
     expect(decode(text)).toEqual('Esto');
-    // text = 'ana (se) (nu) (railimaf)';
-    // expect(decode(text)).toEqual('ana es un familiar');
+    text = 'ana (se) (nu) (railimaf)';
+    expect(decode(text)).toEqual('ana es un familiar');
 });
 
-// test('La funcion puede contener parentesis anidados',()=>{;
-//     let text = '(otsE)';
-//     expect(decode(text)).toEqual('Esto');
-//     text = 'sa(u(cla)atn)s';
-//     expect(decode(text)).toEqual('santaclaus');
-// });
+ test('La funcion puede contener parentesis anidados',()=>{;
+     let text  =    'sa(u(cla)atn)s';
+     expect(decode(text)).toEqual('santaclaus');
+ });
