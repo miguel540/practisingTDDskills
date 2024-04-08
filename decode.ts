@@ -38,7 +38,7 @@ export const decode = (text:string):string => {
                 textInArray.slice(posicionInicial,posicionFinal)
                 .reverse();
 
-            textInArray
+                textInArray
             .splice(posicionInicial,
                  caracteres.length, ...caracteres);
     }
