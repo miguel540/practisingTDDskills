@@ -20,7 +20,8 @@ const canMakeIt = (toyToProcessing:string,materials:string):boolean =>{
 const validateParameters= (giftToMade:string[],materials:string) =>
 {
        if (!Array.isArray(giftToMade)||!isAllElementsAString(giftToMade)) 
-       { throw new Error('The first parameter of the function is not an array or one of its elements is not a string.');}
+       { throw new Error('The first parameter of the function is not an array or one'+
+                     ' of its elements is not a string.');}
        
        if (typeof materials!='string')
               { throw new Error('The second parameter of the function is not a string.');}
