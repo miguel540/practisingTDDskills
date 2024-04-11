@@ -9,6 +9,43 @@ export const cyberReindeer = (road: string, unitTime: number): string[] => {
     let lastPossicionProcessed:number=0;
     let theAreBarrierOpen:boolean=false;
     
+    const moveReindeerForward = (roadInArray: string[],unitTimeProcessed:number): void => {
+        if (lastPossicionProcessed + 1 <= unitTime
+            && movementIsAllowed(lastPossicionProcessed + 1)) {
+            const characterReplacingS : string =
+            getCharacterReplacingS(roadInArray[lastPossicionProcessed + 1]);
+
+            roadInArray[lastPossicionProcessed + 1] = 'S';
+            roadInArray[lastPossicionProcessed] = characterReplacingS;
+            lastPossicionProcessed++;
+        }
+        else
+        {
+            lastPossicionProcessed=unitTimeProcessed;
+        }
+    };
+
+    const processUnitOfTime = (roadInArray:string[],unitTimeProcessed:number)=>{
+        roadInArray= openBarriersWhenItsTime(unitTimeProcessed);
+
+        if (isThereBarrierOff) {
+            moveReindeerForward(roadInArray,unitTimeProcessed);
+        }
+    };
+    
+    const openBarriersWhenItsTime =(unitTimeProcessed:number):string[]=>{
+        
+        if (unitTimeProcessed===UNIT_TIME_TO_OPEN)
+            {
+                roadInArray = roadInArray.map(element => {
+                    return element.replace(/\|/g, '*');
+                });
+                isThereBarrierOff = true;
+            }
+
+            return roadInArray;
+    };
+
     const getCharacterReplacingS = (character:string):string =>{
         switch (character) 
         {
@@ -79,30 +116,8 @@ export const cyberReindeer = (road: string, unitTime: number): string[] => {
     let roadInArray: string[] = road.split('');
 
     for (let unitTimeProcessed = 0; unitTimeProcessed < unitTime; unitTimeProcessed++) {
-        if (unitTimeProcessed===UNIT_TIME_TO_OPEN)
-            {
-                roadInArray = roadInArray.map(element => {
-                    return element.replace(/\|/g, '*');
-                });
-                isThereBarrierOff = true;
-            }
-
-        if (isThereBarrierOff) {
-            if (lastPossicionProcessed + 1 <= unitTime
-                && movementIsAllowed(lastPossicionProcessed + 1)) {
-                const characterReplacingS : string =
-                getCharacterReplacingS(roadInArray[lastPossicionProcessed + 1]);
-
-                roadInArray[lastPossicionProcessed + 1] = 'S';
-                roadInArray[lastPossicionProcessed] = characterReplacingS;
-                lastPossicionProcessed++;
-            }
-            else
-            {
-                lastPossicionProcessed=unitTimeProcessed;
-            }
-        }
-        routeFollowed.push(roadInArray.join(''));
+         processUnitOfTime(roadInArray,unitTimeProcessed);
+         routeFollowed.push(roadInArray.join(''));
     }
 
     return routeFollowed;
