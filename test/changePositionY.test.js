@@ -125,3 +125,9 @@ test('un modificador que contiene Y sin número nos retornará y+valor de global
     global.SUMAYACAB = 1;
     expect(changePositionY(modCab)).toEqual('yy1');
 });
+
+test('con "y22.33.33" y SUMAYACAB = 1 la función retornará "y22.33.33y23.33" ', () => {
+    const modCab = 'y22.33.33';
+    global.SUMAYACAB = 1;
+    expect(changePositionY(modCab)).toEqual('y22.33.33y23.33');
+});

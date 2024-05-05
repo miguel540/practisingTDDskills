@@ -71,6 +71,6 @@ export const changePositionY = (pModCab: string): string => {
 
     const numerosDespuesDeY = extraerNumerosDespuesY(pModCab);
     const nuevaCoordenadaY = 'y' + (parseFloat(numerosDespuesDeY) + global.SUMAYACAB).toString(); //numerosDespuesDeY puede tener decimales
-
+    console.log('nuevaCoordenadaY',nuevaCoordenadaY);
     return pModCab + nuevaCoordenadaY; //Por sencillez me limito a concatenar al final la nueva coordenada dejando la vieja
 };
