@@ -24,7 +24,7 @@ const extraerNumerosDespuesY = (pModCab: string): string => {
     const expresionRegular = /y(\.\d+(?:\.\d+)?|\d+(?:\.\d+)?)/i;
     /*
     La expresión permite retornar de los casos: 'lnlsy55x25' ,'lnlsy.25x10' ,'lnlsy60.68x10' ,'lnlsx15'
-    Los siguientes números: 55, .25 , 60.68 , ''
+    Los siguientes números: 55, .25 , 60.68 , '0'
         /y  : Esto indica que la expresión regular busca la letra 'y' en la cadena.
 
         (   : Esto marca el inicio de un grupo de captura.
