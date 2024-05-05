@@ -18,38 +18,42 @@ test('Validación de la variable global SUMAYACAB', () => {
     const modCab = 'l1lnlsl#FFFFFx15y23';
     global.SUMAYACAB = null;
     expect(() => changePositionY(modCab))
-        .toThrow('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
+        .toThrow
+        ('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
 
     global.SUMAYACAB = 'Tipo de dato incorrecto';
     expect(() => changePositionY(modCab))
-        .toThrow('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
+        .toThrow
+        ('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
 
     global.SUMAYACAB = undefined;
     expect(() => changePositionY(modCab))
-        .toThrow('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
+        .toThrow
+        ('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
 
     global.SUMAYACAB = NaN;
     expect(() => changePositionY(modCab))
-        .toThrow('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
+        .toThrow
+        ('La variable global SUMAYACAB no está definida o no tiene un valor numérico válido');
 });
 
 global.SUMAYACAB = 0; //establezco un valor correcto
 
 test('validación de parámetros', () => {
     expect(() => changePositionY())
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(true))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(null))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(undefined))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(NaN))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(1))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
     expect(() => changePositionY(1.1))
-        .toThrow('La función debe recibir un parámetro de tipo cadena');
+        .toThrow('El parámetro debe ser una cadena de texto');
 });
 
 test('Validación del tipo de dato string para los valores de retorno de la función', () => {
@@ -58,13 +62,6 @@ test('Validación del tipo de dato string para los valores de retorno de la func
     global.SUMAYACAB = 0;
     expect(changePositionY(modCab)).toBeTypeOf('string');
 
-});
-
-test('Validación del dato retornado', () => {
-    ;
-    const modCab = 'l1lnlsl#FFFFFx15y23';
-    global.SUMAYACAB = 0;
-    expect(changePositionY(modCab)).toBeTypeOf('string');
 });
 
 test('Si modCab no contiene "Y" retorna modCab+Y+SUMAYACAB ', () => {
@@ -105,3 +102,26 @@ test('Prueba de entrada de datos al final', () => {
 });
 
 
+test('Si el parámetro esta vacío nos devuelve "y1" si global.SUMAYACAB=1', () => {
+    const modCab = '';
+    global.SUMAYACAB = 1;
+    expect(changePositionY(modCab)).toEqual('y1');
+});
+
+test('Si global.SUMAYACAB=1 y además el parámetro es y.5 la funcion nos da "y1.5"', () => {
+    const modCab = 'y.5';
+    global.SUMAYACAB = 1;
+    expect(changePositionY(modCab)).toEqual('y.5y1.5');
+});
+
+test('Si global.SUMAYACAB=1 y además el parámetro es y1.5 la funcion nos da "y2.5"', () => {
+    const modCab = 'y1.5';
+    global.SUMAYACAB = 1;
+    expect(changePositionY(modCab)).toEqual('y1.5y2.5');
+});
+
+test('un modificador que contiene Y sin número nos retornará y+valor de global.SUMAYACAB', () => {
+    const modCab = 'y';
+    global.SUMAYACAB = 1;
+    expect(changePositionY(modCab)).toEqual('yy1');
+});
